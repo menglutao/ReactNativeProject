@@ -1,0 +1,25 @@
+{
+  "name": "reactnativeproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "initial-setup":"npm i && cd my-project && npm i",
+    "run-web":"cd my-project && npm run web",
+    "Daniel": "echo \"Daniel is the best man\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "expo-cli": "^5.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/menglutao/ReactNativeProject.git"
+  },
+  "author": "menglutao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/menglutao/ReactNativeProject/issues"
+  },
+  "homepage": "https://github.com/menglutao/ReactNativeProject#readme"
+}
