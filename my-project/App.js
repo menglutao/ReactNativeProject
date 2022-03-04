@@ -1,11 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-
 import React from 'react';
 import { StyleSheet, Button, View, SafeAreaView, Text, Alert } from 'react-native';
+import * as Location from 'expo-location';
+
+
 
 const Separator = () => (
   <View style={styles.separator} />
 );
+
+const locatorButtonOnClick = async() => {
+  let { status } = await Location.requestForegroundPermissionsAsync();
+  if (status !== 'granted') {
+    setErrorMsg('Permission to access location was denied');
+    return;
+  }
+
+  let location = await Location.getCurrentPositionAsync({});
+  const text = JSON.stringify(location);
+  return Alert.alert('Location Button pressed'+ text)
+  
+ };
+// or const locatorButtonOnClick = () =>  Alert.alert('Simple Button pressed');
 
 const App = () => (
   <SafeAreaView style={styles.container}>
@@ -14,8 +30,8 @@ const App = () => (
         The title and onPress handler are required. It is recommended to set accessibilityLabel to help make your app usable by everyone.
       </Text>
       <Button
-        title="Press me"
-        onPress={() => Alert.alert('Simple Button pressed')}
+        title="Touch My Daniel"
+        onPress={locatorButtonOnClick}
       />
     </View>
     <Separator />
@@ -24,7 +40,7 @@ const App = () => (
         Adjust the color in a way that looks standard on each platform. On  iOS, the color prop controls the color of the text. On Android, the color adjusts the background color of the button.
       </Text>
       <Button
-        title="Press me"
+        title="Touch me gently"
         color="#f194ff"
         onPress={() => Alert.alert('Button with adjusted color pressed')}
       />
@@ -35,7 +51,7 @@ const App = () => (
         All interaction for the component are disabled.
       </Text>
       <Button
-        title="Press me"
+        title="Touch me"
         disabled
         onPress={() => Alert.alert('Cannot press this one')}
       />
