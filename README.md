@@ -1,4 +1,5 @@
 # ReactNativeProject
+## author: Meng & Daniel
 
 Pre-requisites:
 - NodeJS (recommended version: 16.5.0)
