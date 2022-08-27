@@ -1,11 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
-
 import React from 'react';
 import { StyleSheet, Button, View, SafeAreaView, Text, Alert } from 'react-native';
+import * as Location from 'expo-location';
+// import { initializeApp } from 'firebase/app';
+// import { getFirestore } from 'firebase/firestore/lite';
+// import firebaseConfig from './firebase_config.json';
+
+
+// const app = initializeApp(firebaseConfig);
+// const db = getFirestore(app);
 
 const Separator = () => (
   <View style={styles.separator} />
 );
+
+const getCurrentLocation = async() => {
+  
+  let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+        return;
+      }
+  
+  let location = await Location.getCurrentPositionAsync({});
+  Alert.alert(JSON.stringify(location));
+  console.log(location);
+  // Alert.alert('You tapped the button!');
+}
 
 const App = () => (
   <SafeAreaView style={styles.container}>
@@ -14,8 +35,8 @@ const App = () => (
         The title and onPress handler are required. It is recommended to set accessibilityLabel to help make your app usable by everyone.
       </Text>
       <Button
-        title="Press me"
-        onPress={() => Alert.alert('Simple Button pressed')}
+        title="Current Location"
+        onPress={getCurrentLocation}
       />
     </View>
     <Separator />

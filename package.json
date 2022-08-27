@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "initial-setup": "npm i && cd my-project && npm i",
+    "start": "npm run run-web",
     "run-web": "cd my-project && npm run web",
     "Daniel": "echo \"Daniel is the best man\"",
     "test": "echo \"Error: no test specified\" && exit 1"
