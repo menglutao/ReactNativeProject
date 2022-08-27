@@ -10,14 +10,13 @@ import { getDatabase, ref, set , child, get} from "firebase/database";
 // initialize firebase 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
+const currentUserName = "Meng";
 
 //write User's data into firebase
-const writeUserData = (userId, name, email) => {
+const writeUserData = (userId,position) => {
   set(ref(db,'users/' + userId), {
-    userId: userId,
-    name: name,
-    email: email,
-    
+      userId: userId,
+      position: position,
     });
 }
 
@@ -35,6 +34,7 @@ const getUserData = (userId) => {
   });
 }
 
+
 const Separator = () => (
   <View style={styles.separator} />
 );
@@ -49,6 +49,7 @@ const updateCurrentLocation = async() => {
   
   let location = await Location.getCurrentPositionAsync({});
   Alert.alert(JSON.stringify(location));
+  writeUserData(currentUserName,location);
   
   console.log(location);
   // Alert.alert('You tapped the button!');
@@ -74,7 +75,7 @@ const App = () => (
       <Button
         title="Write User Data"
         color="#fc8003"
-        onPress={() => writeUserData('001', 'John Doe', 'azraeltml@gmail.com')}
+        onPress={() => Alert.alert('User data not written')}
       />
     </View>
     <Separator />
