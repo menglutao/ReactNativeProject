@@ -1,62 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Button, View, SafeAreaView, Text, Alert,TextInput } from 'react-native';
-import * as Location from 'expo-location';
-import { initializeApp } from 'firebase/app';
-import firebaseConfig from './firebase_config.json';
-import { getDatabase, ref, set , child, get} from "firebase/database";
+import  {updateMyCurrentLocation, getUserData} from './src/location';
 
-
-
-// initialize firebase 
-const app = initializeApp(firebaseConfig);
-const db = getDatabase();
-// const currentUserName = "Meng";
-
-// const trackedUserName = "Daniel";
-
-//write User's data into firebase
-const writeUserData = (userId,position) => {
-  set(ref(db,'users/' + userId), {
-      userId: userId,
-      position: position,
-    });
-}
-
-//read the db data for once
-const getUserData = (userId) => {
-  const dbRef = ref(db);
-  get(child(dbRef, `users/${userId}`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      console.log(snapshot.val());
-    } else {
-      console.log("No data available");
-    }
-  }).catch((error) => {
-    console.error(error);
-  });
-}
 
 
 const Separator = () => (
   <View style={styles.separator} />
 );
 
-const updateMyCurrentLocation = async(currentUserName) => {
-  
-  let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
-      }
-  
-  let location = await Location.getCurrentPositionAsync({});
-  Alert.alert(JSON.stringify(location));
-  writeUserData(currentUserName,location);
-  
-  console.log(location);
-  // Alert.alert('You tapped the button!');
-}
 
 const App = () => {
 
