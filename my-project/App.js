@@ -1,19 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Button, View, SafeAreaView, Text, Alert,TextInput } from 'react-native';
-import  {updateMyCurrentLocation, getUserData} from './src/location';
+import {
+  StyleSheet, Button, View, SafeAreaView, Text, Alert, TextInput,
+} from 'react-native';
+import { updateMyCurrentLocation, getUserData } from './src/location';
 
 
+function Separator() {
+  return <View style={styles.separator} />;
+}
 
-const Separator = () => (
-  <View style={styles.separator} />
-);
-
-
-const App = () => {
-
-  const [currentUserName, onChangeCurrentUserName] = React.useState("Meng"); 
-  const [trackedUserName, onChangeTrackedUserName] = React.useState("Daniel");
+function App() {
+  const [currentUserName, onChangeCurrentUserName] = React.useState('Meng');
+  const [trackedUserName, onChangeTrackedUserName] = React.useState('Daniel');
+  // const [region, onChangeRegion] = React.useState({
+  //   region: {
+  //     latitude: 45.4310163,
+  //     longitude: 11.8796273,
+  //     latitudeDelta: 0.0922,
+  //     longitudeDelta: 0.0421,
+  //   },
+  // });
 
   return (
     <SafeAreaView style={styles.container}>
@@ -82,7 +89,7 @@ const App = () => {
       <StatusBar style="auto" />
     </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   input: {
@@ -112,5 +119,3 @@ const styles = StyleSheet.create({
 });
 
 export default App;
-
-
