@@ -1,9 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect } from "react";
 import {
   StyleSheet, Button, View, SafeAreaView, Text, Alert, TextInput,
 } from 'react-native';
 import { updateMyCurrentLocation, getUserData } from './src/location';
+
+import MapView, {
+  PROVIDER_GOOGLE,
+  MAP_TYPES,
+  PROVIDER_DEFAULT,
+  UrlTile,
+  Marker,
+} from "react-native-maps";
 
 
 function Separator() {
@@ -69,7 +77,7 @@ function App() {
         />
       </View>
       <Separator />
-      <View>
+      {/* <View>
         <Text style={styles.title}>
           This layout strategy lets the title define the width of the button.
         </Text>
@@ -77,7 +85,7 @@ function App() {
           <Button
             title="Left button"
             color="#d1ceb0"
-            onPress={() => Alert.alert('Left button pressed')}
+            onPress={() => Alert.alert('Left button')}
           />
           <Button
             title="Right button"
@@ -85,7 +93,11 @@ function App() {
             onPress={() => Alert.alert('Right button pressed')}
           />
         </View>
+      </View> */}
+      <View style={styles.container}>
+        <MapView style={styles.map} />
       </View>
+
       <StatusBar style="auto" />
     </SafeAreaView>
   );
@@ -115,6 +127,16 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     borderBottomColor: '#737373',
     borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  map: {
+    width: 200,
+    height: 200,
   },
 });
 
