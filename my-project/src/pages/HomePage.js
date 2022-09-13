@@ -9,8 +9,9 @@ function Separator() {
 }
 
 function HomePage({ navigation }) {
-  const [currentUserName, onChangeCurrentUserName] = React.useState('Meng');
-  const [trackedUserName, onChangeTrackedUserName] = React.useState('Daniel');
+  const [currentUserName, setChangeCurrentUserName] = React.useState('Meng');
+  const [trackedUserName, setChangeTrackedUserName] = React.useState('Daniel');
+
 
   return (
     <SafeAreaView style={Styles.container}>
@@ -20,7 +21,7 @@ function HomePage({ navigation }) {
         </Text>
         <TextInput
           style={Styles.input}
-          onChangeText={onChangeCurrentUserName}
+          onChangeText={setChangeCurrentUserName}
           value={currentUserName}
         />
       </View>
@@ -30,7 +31,7 @@ function HomePage({ navigation }) {
         </Text>
         <TextInput
           style={Styles.input}
-          onChangeText={onChangeTrackedUserName}
+          onChangeText={setChangeTrackedUserName}
           value={trackedUserName}
         />
       </View>

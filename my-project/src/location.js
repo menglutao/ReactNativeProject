@@ -4,7 +4,7 @@ import { writeToRealTimeDB, readFromRealTimeDB } from './database/firebaseDB';
 // write User's data into firebase
 const writeUserData = (currentUserName, locationPayload) => writeToRealTimeDB(`users/${currentUserName}`, locationPayload);
 
-const updateMyCurrentLocation = async (currentUserName) => {
+const writeLocationToDB = async (currentUserName) => {
   const { status } = await Location.requestForegroundPermissionsAsync();
   if (status !== 'granted') {
     // setErrorMsg('Permission to access location was denied');
@@ -21,7 +21,7 @@ const updateMyCurrentLocation = async (currentUserName) => {
 };
 
 // read the db data for once
-const getUserData = async (userId) => {
+const readLocationFromDB = async (userId) => {
   const path = `users/${userId}`;
   const result = await readFromRealTimeDB(path);
   if (result == null) {
@@ -29,6 +29,11 @@ const getUserData = async (userId) => {
   } else {
     console.log(JSON.stringify(result));
   }
+  const coordinates =  [ result.coords.latitude,result.coords.longitude]
+
+  console.log(coordinates);
+  return coordinates;
+  
 };
 
-export { updateMyCurrentLocation, getUserData };
+export { writeLocationToDB, readLocationFromDB };
