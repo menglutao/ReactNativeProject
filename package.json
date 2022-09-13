@@ -10,6 +10,8 @@
     "android": "cd my-project && npm run android",
     "ios": "cd my-project && npm run ios",
     "Daniel": "echo \"Daniel is the best man\"",
+    "lint": "cd my-project && npm run lint",
+    "lint-fix": "cd my-project && npm run lint-fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

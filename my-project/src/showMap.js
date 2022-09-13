@@ -1,6 +1,3 @@
-
-
-
 // const showMap = () => {
 
 //   let location = {
@@ -11,12 +8,12 @@
 //   };
 
 //   return (
-    
+
 //   );
 // }
 
 // const styles = StyleSheet.create({
-  
+
 // });
 
 // export default showMap;
