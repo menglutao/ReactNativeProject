@@ -1,25 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect ,useRef} from "react";
+import React, { useEffect, useRef } from 'react';
 import {
   StyleSheet, Button, View, SafeAreaView, Text, Alert, TextInput,
 } from 'react-native';
-import { updateMyCurrentLocation, getUserData } from './src/location';
-
 import MapView, {
   PROVIDER_GOOGLE,
   MAP_TYPES,
   PROVIDER_DEFAULT,
   UrlTile,
   Marker,
-} from "react-native-maps";
+} from 'react-native-maps';
+import { updateMyCurrentLocation, getUserData } from './src/location';
 
 const INITIAL_REGION = {
   latitude: 59.44089,
   longitude: 24.72749,
   latitudeDelta: 2.036923536294034,
   longitudeDelta: 2.48705391138792,
-}
-
+};
 
 function Separator() {
   return <View style={styles.separator} />;
@@ -28,8 +26,7 @@ function Separator() {
 function App() {
   const [currentUserName, onChangeCurrentUserName] = React.useState('Meng');
   const [trackedUserName, onChangeTrackedUserName] = React.useState('Daniel');
-  const mapRef = useRef(null)
-
+  const mapRef = useRef(null);
 
   // const [region, onChangeRegion] = React.useState({
   //   region: {
@@ -105,14 +102,15 @@ function App() {
         </View>
       </View> */}
       <View style={styles.container}>
-        <MapView style={styles.map}       
+        <MapView
+          style={styles.map}
           provider={PROVIDER_GOOGLE}
           ref={mapRef}
           initialRegion={INITIAL_REGION}
-          showsMyLocationButton={true}
-          showsCompass={true}
-        >   
-        <Marker coordinate={{ latitude: 59.44089, longitude: 24.72749 }} title="My Location" />     
+          showsMyLocationButton
+          showsCompass
+        >
+          <Marker coordinate={{ latitude: 59.44089, longitude: 24.72749 }} title="My Location" />
         </MapView>
       </View>
 
