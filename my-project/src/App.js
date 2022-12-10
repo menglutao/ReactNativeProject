@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
+import { registerRootComponent } from 'expo';
 import {
   StyleSheet, Button, View, SafeAreaView, Text, Alert, TextInput,
 } from 'react-native';
@@ -26,4 +27,4 @@ function App() {
   );
 }
 
-export default App;
+export default registerRootComponent(App);

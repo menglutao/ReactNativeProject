@@ -15,8 +15,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "expo-cli": "^5.2.0",
-    "leaflet": "^1.9.3"
+    "expo-cli": "^5.2.0"
   },
   "repository": {
     "type": "git",

@@ -1,22 +1,30 @@
 import React, { useState,useEffect} from 'react';
 import L from 'leaflet';
-import { View } from 'react-native';
 
-
-export const MapView = () => {
+export const MapView = ({ latitude, longitude }) => {
   const [map, setMap] = useState(null);
+
+  var greenIcon = L.icon({
+      iconUrl: require("../../../assets/babe2.png"),
+
+      iconSize:     [95, 95], // size of the icon
+      shadowSize:   [50, 64], // size of the shadow
+      iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+      shadowAnchor: [4, 62],  // the same for the shadow
+      popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+  });
 
   const initializeMap = () => {
     // Create a new map instance
-    const mapInstance = L.map('map', {
-      center: [51.505, -0.09],
-      zoom: 13,
-    });
+    const mapInstance = L.map('map').setView([latitude, longitude], 13);
 
     // Add a tile layer to the map
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(mapInstance);
+
+    // Create a new marker instance
+    L.marker([latitude, longitude], {icon: greenIcon}).addTo(mapInstance);
 
     // Save the map instance in the state
     setMap(mapInstance);
@@ -27,9 +35,9 @@ export const MapView = () => {
   }, []);
 
   return (
-    <View style={{ flex: 1 }}>
-      <div id="map" style={{ height: '50%', width: '50%' }} />
-    </View>
+    <>
+      <div id="map" style={{ height: 750, width: "100%"  }} />
+    </>
   );
 };
 

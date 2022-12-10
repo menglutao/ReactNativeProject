@@ -10,11 +10,6 @@ const Styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    marginHorizontal: 16,
-  },
   title: {
     textAlign: 'center',
     marginVertical: 8,
@@ -34,6 +29,9 @@ const Styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  container_tracker_page: {
+    backgroundColor: '#fff'
   },
   map: {
     width: 350,
