@@ -2,7 +2,7 @@ import React from 'react';
 import {
   StyleSheet, Button, View, SafeAreaView, Text, Alert, TextInput,
 } from 'react-native';
-import Styles from '../Styles';
+import Styles from '../styles/Styles';
 
 function Separator() {
   return <View style={styles.separator} />;
@@ -36,6 +36,7 @@ function HomePage({ navigation }) {
         />
       </View>
       <Separator />
+     
       <Button
         title="Start Tracking!"
         color="#fcc203"

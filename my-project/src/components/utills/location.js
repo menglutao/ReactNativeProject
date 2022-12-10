@@ -1,5 +1,5 @@
 import * as Location from 'expo-location';
-import { writeToRealTimeDB, readFromRealTimeDB } from './database/firebaseDB';
+import { writeToRealTimeDB, readFromRealTimeDB } from '../database/firebaseDB';
 
 // write User's data into firebase
 const writeUserData = (currentUserName, locationPayload) => writeToRealTimeDB(`users/${currentUserName}`, locationPayload);

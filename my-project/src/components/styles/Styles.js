@@ -24,6 +24,24 @@ const Styles = StyleSheet.create({
     borderBottomColor: '#737373',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
-});
+  fixToText: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  map: {
+    width: 350,
+    height: 300,
+  },
+  });
 
 export default Styles;
+
+
+

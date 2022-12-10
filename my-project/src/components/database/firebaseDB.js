@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app';
 import {
   getDatabase, ref, set, child, get,
 } from 'firebase/database';
-import firebaseConfig from '../../firebase_config.json';
+import firebaseConfig from '../../../firebase_config.json';
 
 // initialize firebase
 const app = initializeApp(firebaseConfig);

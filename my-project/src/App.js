@@ -4,8 +4,9 @@ import React from 'react';
 import {
   StyleSheet, Button, View, SafeAreaView, Text, Alert, TextInput,
 } from 'react-native';
-import HomePage from './src/pages/HomePage';
-import TrackerPage from './src/pages/TrackerPage';
+
+import TrackerPage from './components/pages/TrackerPage';
+import HomePage from './components/pages/HomePage';
 
 const Stack = createNativeStackNavigator();
 

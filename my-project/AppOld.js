@@ -10,7 +10,7 @@ import MapView, {
   UrlTile,
   Marker,
 } from 'react-native-maps';
-import { updateMyCurrentLocation, getUserData } from './src/location';
+import { updateMyCurrentLocation, getUserData } from './src/components/location';
 
 const INITIAL_REGION = {
   latitude: 59.44089,
@@ -28,14 +28,6 @@ function App() {
   const [trackedUserName, onChangeTrackedUserName] = React.useState('Daniel');
   const mapRef = useRef(null);
 
-  // const [region, onChangeRegion] = React.useState({
-  //   region: {
-  //     latitude: 45.4310163,
-  //     longitude: 11.8796273,
-  //     latitudeDelta: 0.0922,
-  //     longitudeDelta: 0.0421,
-  //   },
-  // });
 
   return (
     <SafeAreaView style={styles.container}>
@@ -101,6 +93,7 @@ function App() {
           />
         </View>
       </View> */}
+
       <View style={styles.container}>
         <MapView
           style={styles.map}
