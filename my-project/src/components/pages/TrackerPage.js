@@ -66,7 +66,7 @@ function TrackerPage({ navigation, route }) {
         </Text>
         
         <Button
-            title="Update My Current Location"
+            title={"Update My Current Location (I'm " + route.params.currentUserName + ")"}
             color="#fc4903"
             onPress={() => writeLocationToDB(route.params.currentUserName)}
           />
