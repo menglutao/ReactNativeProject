@@ -29,10 +29,10 @@ const readLocationFromDB = async (userId) => {
   } else {
     console.log(JSON.stringify(result));
   }
-  const coordinates =  [ result.coords.latitude,result.coords.longitude]
+  const userCoordinates =  [ result.coords.latitude,result.coords.longitude]
 
-  console.log(coordinates);
-  return coordinates;
+  console.log(userCoordinates);
+  return userCoordinates;
   
 };
 

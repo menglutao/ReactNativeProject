@@ -1,11 +1,11 @@
 import React, { useState,useEffect} from 'react';
 import L from 'leaflet';
 
-export const MapView = ({ latitude, longitude }) => {
+export const MapView = ({ latitude, longitude, person }) => {
   const [map, setMap] = useState(null);
 
   var greenIcon = L.icon({
-      iconUrl: require("../../../assets/babe2.png"),
+      iconUrl: (person == 'Meng' ? require("../../../assets/babe.png") : require("../../../assets/babe2.png")),
 
       iconSize:     [95, 95], // size of the icon
       shadowSize:   [50, 64], // size of the shadow

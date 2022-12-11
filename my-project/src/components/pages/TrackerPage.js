@@ -14,18 +14,19 @@ function TrackerPage({ navigation, route }) {
   // console.log(currentUserLocation);
 
 
-  const [coordinates, setCoordinates] = useState([]);
+  const [userCoordinates, setUserCoordinates] = useState([]);
+  const [trackedCoordinates, setTrackedCoordinates] = useState([]);
   const [isLinkElementLoaded, setLinkElementLoaded] = useState(false)
   const [isScriptElementLoaded, setScriptElementLoaded] = useState(false)
 
   const fetchCurrentUserLocation = async() => {
     const currentUserLocation = await readLocationFromDB(route.params.currentUserName);
-    setCoordinates(currentUserLocation);
+    setUserCoordinates(currentUserLocation);
   };
 
   const fetchTrakerLocation = async() => {
     const trackedUserLocation = await readLocationFromDB(route.params.trackedUserName);
-    setCoordinates(trackedUserLocation);
+    setTrackedCoordinates(trackedUserLocation);
   };
 
   useEffect(() => {
@@ -60,7 +61,8 @@ function TrackerPage({ navigation, route }) {
           You are {route.params.currentUserName}, and you are tracking {route.params.trackedUserName}
         </Text>
         <Text>
-          {coordinates.length > 0 ? `${coordinates[0]}, ${coordinates[1]}` : 'No location found'}
+          Your location: {userCoordinates.length > 0 ? `${userCoordinates[0]}, ${userCoordinates[1]}` : 'No location found'} <br/>
+          Love location: {trackedCoordinates.length > 0 ? `${trackedCoordinates[0]}, ${trackedCoordinates[1]}` : 'No location found'}
         </Text>
         
         <Button
@@ -69,9 +71,9 @@ function TrackerPage({ navigation, route }) {
             onPress={() => writeLocationToDB(route.params.currentUserName)}
           />
         
-        {isScriptElementLoaded && isLinkElementLoaded && coordinates.length > 0 &&
+        {isScriptElementLoaded && isLinkElementLoaded && userCoordinates.length > 0 && trackedCoordinates.length > 0 &&
           <View>
-            <MapView latitude={coordinates[0]} longitude={coordinates[1]}/>
+            <MapView latitude={trackedCoordinates[0]} longitude={trackedCoordinates[1]} person={route.params.trackedUserName}/>
           </View>
         }
 

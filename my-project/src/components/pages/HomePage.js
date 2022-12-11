@@ -13,6 +13,12 @@ function HomePage({ navigation }) {
   const [trackedUserName, setChangeTrackedUserName] = React.useState('Daniel');
 
 
+  const switchName = () => {
+    const aux = currentUserName
+    setChangeCurrentUserName(trackedUserName)
+    setChangeTrackedUserName(aux)
+  }
+
   return (
     <SafeAreaView style={Styles.container}>
       <View>
@@ -35,6 +41,11 @@ function HomePage({ navigation }) {
           value={trackedUserName}
         />
       </View>
+      <Button
+        title="Switch names"
+        color="#fcc203"
+        onPress={() => switchName()}
+      />
       <Separator />
      
       <Button
