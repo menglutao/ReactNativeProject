@@ -31,7 +31,7 @@ const readLocationFromDB = async (userId) => {
   }
   const userCoordinates =  [ result.coords.latitude,result.coords.longitude]
 
-  console.log(userCoordinates);
+  //console.log(userCoordinates);
   return userCoordinates;
   
 };
